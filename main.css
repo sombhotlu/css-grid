@@ -1,0 +1,206 @@
+/* .divContainer {
+    margin: 20px;
+    display: grid;
+    height: 500px;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 5rem 5rem 2.5rem;
+}
+
+.el1 {
+    background-color: rgba(255, 154, 72, 0.5);
+}
+
+.el2 {
+    background-color: rgba(255, 0, 0, 0.5);
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.el3 {
+    background-color: rgba(0, 128, 0, 0.5);
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.el4 {
+    background-color: rgba( 0, 4, 255, 0.5);
+    
+}
+
+.el5 {
+    background-color: rgba(255, 72, 240, 0.5);
+
+} */
+
+
+
+.pageLayout {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-gap: 1rem 1rem;
+
+    grid-template-columns: repeat(2, [col-start] 50% [col-end]);
+    /* grid-template-columns: 2fr 5fr; */
+    /* grid-template-columns: 20% 50%; */
+
+    /* If we give only 1 value to grid-template-* then it will affect only 1st child */
+
+    /* The difference between implicit and explicit grid is that in:
+    Explicit: we define entire grid
+    Implicit: we define on what we care and rest is adjusted according to grid-auto-* */
+
+    grid-template-rows: [row-1-start] 5rem [row-1-end row-2-start] auto [row-2-end row-3-start]  5rem [row-3-end];
+
+    grid-template-areas: "header header"
+                         "sidebar main"
+                         "footer footer";
+
+    /* justify-content: start; */
+    /* align-content: center; */
+
+
+    /* justify-items: center;
+    align-items: center; */
+
+    
+    /* grid-auto-rows adds minimum height for each grid element */
+    /* By default new grid items gets added to bottom  we can change this */
+
+    /* grid-auto-rows: 12em; */
+    /* grid-auto-rows: minmax(12rem, auto) */
+}
+
+.header {
+    background-color: rgb(53, 51, 51);
+    color: white;
+    /* margin: 1rem 0 0; */
+    text-align: center;
+
+    /* Below is used when we have to use repeat and give [column-start] [column-end] */
+    /* column-end lines will be lines after column-start */
+    
+    grid-column: col-start 1 / col-end 2;     
+
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+
+
+
+    /* grid-area: header; */
+
+}
+
+.sidebar {
+    background-color: rgb(53, 51, 51);
+    color: white;
+    text-align: center;
+    /* margin: 1rem 1rem 1rem 0; */
+
+    /* grid-column-start: 1;
+    grid-column-end: 2; */
+
+    grid-area: sidebar
+}
+
+.maincontent {
+    background-color: rgb(53, 51, 51);
+    color: white;
+    text-align: center;
+    /* margin: 1rem 0; */
+
+    grid-area: main;
+    /* grid-area: 2 / 2 ; */
+}
+
+
+.footer {
+    background-color: rgb(53, 51, 51);
+    color: white;
+    text-align: center;
+
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+
+    /* margin: 0 0 1rem 0; */
+
+    grid-area: footer;
+
+}
+
+@media (max-width: 500px) {
+    .pageLayout {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        grid-gap: 1rem 1rem;
+        grid-template-columns: 2fr 5fr;
+        grid-template-rows: 5rem auto 5rem;
+
+        grid-template-areas:  "header header" 
+                             "main main"
+                             "footer footer"
+    }
+
+    .sidebar {
+        /* display: none; */
+        background-color: rgb(206, 18, 18);
+        z-index: 5;
+        color: white;
+        text-align: center;
+    
+        grid-column: 1 / 1;
+        grid-row: 1 / 3;
+    
+    }
+}
+/* 
+.container {
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 150px auto;
+}
+
+.box1 {
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    transform: translateZ(-20rem)
+}
+
+
+.box2 {
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    transform: rotateZ(45deg) translateX(12rem) translateY(20rem)
+}
+ */
+
+
+
+
+
+/* fit-content(8 rem) */
+
+/* This is a very interesting concept because we will grid-template-column OR grid-template-row it take only 8rem 
+and just to fit content it might expand */
+
+
+/* auto-fill */
+
+/* This is used in grid-template-* inside repeat when we are unaware on number of items */
+
+
+/* auto-fit
+Very similar to auto-fill, it is used when we have less items */
